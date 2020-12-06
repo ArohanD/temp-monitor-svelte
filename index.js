@@ -3,11 +3,9 @@ const { app, BrowserWindow, screen } = require('electron');
 require('electron-reload')(__dirname);
 
 const createWindow = () => {
-    const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
     window = new BrowserWindow({
-        width: width / 1.25,
-        height: height / 1.25,
+        fullscreen: true,
         webPreferences: {
             nodeIntegration: true
         }
