@@ -1,3 +1,4 @@
+// This is the entry point for electron
 const { app, BrowserWindow, screen } = require('electron');
 require('electron-reload')(__dirname);
 
