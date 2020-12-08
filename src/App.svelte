@@ -1,13 +1,16 @@
 <script>
   export let name;
-
-  import { time } from "./stores";
+  
+  import { time, stats } from "./stores";
   const formatter = new Intl.DateTimeFormat("en", {
     hour12: true,
     hour: "numeric",
     minute: "2-digit",
     second: "2-digit",
-	});
+  });
+  
+  import Odometer from './Odometer.svelte';
+  $: keys = Object.keys($stats)
 	
 </script>
 
@@ -40,5 +43,8 @@
     <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
     to learn how to build Svelte apps.
 	</p>
-	<h2>The time is {formatter.format($time)}</h2>
+  <h2>The time is {formatter.format($time)}</h2>
+  {#each keys as key (JSON.stringify($stats[key]))}
+    <Odometer stat={$stats[key]} />
+  {/each}
 </main>
