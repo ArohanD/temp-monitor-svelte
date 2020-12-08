@@ -1,6 +1,4 @@
 <script>
-  export let name;
-  
   import { time, stats } from "./stores";
   const formatter = new Intl.DateTimeFormat("en", {
     hour12: true,
@@ -8,9 +6,14 @@
     minute: "2-digit",
     second: "2-digit",
   });
+
+  const relevantStats = [
+    'GPU Core', 'CPU Package'
+  ]
   
   import Odometer from './Odometer.svelte';
   $: keys = Object.keys($stats)
+    .filter(key => relevantStats.includes(key));
 	
 </script>
 
@@ -37,12 +40,7 @@
 </style>
 
 <main>
-  <h1>Hello {name}!</h1>
-  <p>
-    Visit the
-    <a href="https://svelte.dev/tutorial">Svelte tutorial</a>
-    to learn how to build Svelte apps.
-	</p>
+  <h1>System Monitor</h1>
   <h2>The time is {formatter.format($time)}</h2>
   {#each keys as key (JSON.stringify($stats[key]))}
     <Odometer stat={$stats[key]} />
