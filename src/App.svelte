@@ -8,7 +8,8 @@
   });
 
   const relevantStats = [
-    'GPU Core', 'CPU Package'
+    'GPU Core', 
+    //'CPU Package'
   ]
   
   import Odometer from './Odometer.svelte';
@@ -18,7 +19,7 @@
 </script>
 
 <style>
-  main {
+  /* main {
     text-align: center;
     padding: 1em;
     max-width: 240px;
@@ -36,12 +37,22 @@
     main {
       max-width: none;
     }
+  } */
+
+  main {
+    margin: 0 auto;
+
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    width: 100vw;
+
+    background-color: #dfe1e8;
   }
+
 </style>
 
 <main>
-  <h1>System Monitor</h1>
-  <h2>The time is {formatter.format($time)}</h2>
   {#each keys as key (JSON.stringify($stats[key]))}
     <Odometer stat={$stats[key]} />
   {/each}

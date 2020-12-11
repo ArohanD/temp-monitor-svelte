@@ -1,5 +1,8 @@
 import { readable } from 'svelte/store';
 
+const stub = 'http://localhost:3000/'
+const dora = 'http://192.168.1.104:3000/sys_stats/'
+
 export const time = readable(new Date(), function start(set) {
 	const interval = setInterval(() => {
 		set(new Date());
@@ -18,9 +21,9 @@ const fakeStat = { loading: {
 }}
 
 export const stats = readable(fakeStat, function start(set) {
-	const interval = setInterval(() => {
-		asyncFetch('http://192.168.1.104:3000/sys_stats/', set)
-	}, 1000);
+	// const interval = setInterval(() => {
+		asyncFetch(stub, set)
+	// }, 1000);
 
 	return function stop() {
 		clearInterval(interval);
