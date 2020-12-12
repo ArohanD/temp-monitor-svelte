@@ -1,14 +1,14 @@
 // This is the entry point for electron
 const { app, BrowserWindow, screen } = require('electron');
-require('electron-reload')(__dirname);
+// require('electron-reload')(__dirname);
 
 const createWindow = () => {
     const { width, height } = screen.getPrimaryDisplay().workAreaSize;
 
     window = new BrowserWindow({
-        //fullscreen: true,
-        width: 640,
-        height: 480,
+        fullscreen: true,
+        // width: 640,
+        // height: 480,
         webPreferences: {
             nodeIntegration: true
         }

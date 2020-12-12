@@ -1,5 +1,5 @@
 /node_modules/
 /public/build/
 stub-server
-
+dist
 .DS_Store
