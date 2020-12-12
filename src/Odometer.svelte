@@ -1,4 +1,3 @@
-
 <script>
   /*
   - Useabale circumference is +/- 137deg
@@ -11,26 +10,26 @@
   const minRotation = 274 * (Min / 100) + -137;
   const maxRotation = 274 * (Max / 100) + -137;
 
-  console.log(Min, Value, Max)
-  
   onMount(() => {});
 </script>
 
 <style type="text/scss">
-  .neumorph {
-    // background: #dfe1e8;
-    // box-shadow:  20px 20px 60px #bebfc5,
-    //          -20px -20px 60px #ffffff;
-  }
+  main {
+    padding: 10px;
+    width: 80vh;
+    height: 80vh;
 
+    display: grid;
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+      "Lucida Sans", Arial, sans-serif;
+  }
   .progress {
     position: relative;
-    color: bisque;
 
     width: 100%;
     height: 100%;
     background: #97acf5;
-    background: linear-gradient(0.25turn, #9198e5, #e66465);
+    background: linear-gradient(0.25turn, #9198e5, #eb7d7d);
     border-radius: 50%;
 
     display: grid;
@@ -44,43 +43,24 @@
       height: 230px;
       width: 230px;
       border-radius: 50%;
-      // border-bottom-left-radius: 0;
-      // border-bottom-right-radius: 0;
-      // background-color: #dfe1e8;
 
       background: #dfe1e8;
       box-shadow: 1px 1px 10px #bebfc5;
-      //  -20px -20px 60px #ffffff;
 
       display: grid;
       place-items: center;
 
       .inner_inner_circle {
+        position: relative;
         height: 200px;
         width: 200px;
         border-radius: 50%;
         background-color: rgb(144, 187, 236);
         background: linear-gradient(145deg, #79c8fd, #66a8d4);
-        box-shadow:  1px 1px 10px #5f9cc5
-             -1px -1px 10px #72bdee;
-
-        // display: grid;
-        // place-items: center;
+        box-shadow: 1px 1px 10px #5f9cc5 -1px -1px 10px #72bdee;
         color: rgb(0, 23, 71);
-
-        position: relative;
       }
     }
-  }
-
-  main {
-    padding: 10px;
-    width: 80vh;
-    height: 80vh;
-
-    display: grid;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
   }
 
   .blocker_square {
@@ -131,7 +111,6 @@
     width: 100px;
 
     color: rgb(116, 116, 116);
-    // border: 1px solid black;
     border-radius: 20px;
     padding: 4px;
     background: linear-gradient(0.5turn, #a5acee, #6466e6);
@@ -145,26 +124,22 @@
     width: 80vh;
     border-radius: 50%;
     z-index: 2;
-
     position: absolute;
-    // left: 2px;
-    // bottom: 200px;
-
     transform: rotate(calc(var(--rotation) * 1deg));
   }
 
   .circle_temp_inner {
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
     background-color: black;
 
     position: relative;
     left: 50%;
+    top: 9.5%;
     transform: translate(-50%, -50%) rotate(calc(var(--rotation) * -1deg));
     background: #dfe1e8;
-    // box-shadow:  5px 5px 11px #cbcdd3, 
-    //             -5px -5px 11px #f3f5fd;
+
     display: grid;
     place-items: center;
   }
@@ -172,29 +147,20 @@
 
 <main>
   {#if stat}
-    <!-- <p>
-      {Name} is currently {Math.round(Value)}. Min: {Math.round(Min)} Max: {Math.round(Max)}
-    </p> -->
     <div class="circle_temp_value" style="--rotation: {minRotation}">
-      <div class="circle_temp_inner">
-        {Min}
-      </div>
+      <div class="circle_temp_inner">{Math.round(Min)}</div>
     </div>
     <div class="circle_temp_value" style="--rotation: {maxRotation}">
-      <div class="circle_temp_inner">
-        {Max}
-      </div>
+      <div class="circle_temp_inner">{Math.round(Max)}</div>
     </div>
     <div class="circle_temp_value" style="--rotation: {currentRotation}">
-      <div class="circle_temp_inner">
-        {Value}
-      </div>
+      <div class="circle_temp_inner">{Math.round(Value)}</div>
     </div>
     <div class="progress neumorph" id="progress">
       <div class="blocker_square neumorph" />
       <div class="neumorph inner_circle">
         <div class="inner_inner_circle">
-          <h1 class="stats_value">{`${Value}°C`}</h1>
+          <h1 class="stats_value">{`${Math.round(Value)}°C`}</h1>
         </div>
       </div>
       <p class="stats_name">{Name}</p>
