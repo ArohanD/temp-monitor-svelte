@@ -14,6 +14,9 @@
 </script>
 
 <style type="text/scss">
+
+  $base-color: #dfe1e8;
+
   main {
     padding: 10px;
     width: 80vh;
@@ -44,7 +47,7 @@
       width: 230px;
       border-radius: 50%;
 
-      background: #dfe1e8;
+      background: $base-color;
       box-shadow: 1px 1px 10px #bebfc5;
 
       display: grid;
@@ -75,19 +78,9 @@
 
     height: 230px;
     width: 230px;
-    background-color: #dfe1e8;
+    background-color: $base-color;
     display: block;
     transform: rotate(45deg);
-  }
-
-  .inner_shape {
-    position: relative;
-
-    width: 100%;
-    height: 100%;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
   }
 
   .stats_value,
@@ -138,20 +131,40 @@
     left: 50%;
     top: 9.5%;
     transform: translate(-50%, -50%) rotate(calc(var(--rotation) * -1deg));
-    background: #dfe1e8;
+    background: $base-color;
 
     display: grid;
     place-items: center;
+
+    box-shadow: 0.5px 0.5px 1px #bebfc5, -0.5px -0.5px 2px 0px #ffffff;
+
+    p {
+      padding: 0;
+      margin: 0;
+
+      position: absolute;
+    }
+
+    .circle_temp_label {
+      bottom: 15%;
+      font-size: 0.5em;
+    }
   }
 </style>
 
 <main>
   {#if stat}
     <div class="circle_temp_value" style="--rotation: {minRotation}">
-      <div class="circle_temp_inner">{Math.round(Min)}</div>
+      <div class="circle_temp_inner">
+        <p>{Math.round(Min)}</p>
+        <p class="circle_temp_label">min</p>
+      </div>
     </div>
     <div class="circle_temp_value" style="--rotation: {maxRotation}">
-      <div class="circle_temp_inner">{Math.round(Max)}</div>
+      <div class="circle_temp_inner">
+        <p>{Math.round(Max)}</p>
+        <p class="circle_temp_label">max</p> 
+      </div>
     </div>
     <div class="circle_temp_value" style="--rotation: {currentRotation}">
       <div class="circle_temp_inner">{Math.round(Value)}</div>
