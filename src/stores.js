@@ -21,9 +21,9 @@ const fakeStat = { loading: {
 }}
 
 export const stats = readable(fakeStat, function start(set) {
-	// const interval = setInterval(() => {
+	const interval = setInterval(() => {
 		asyncFetch(stub, set)
-	// }, 1000);
+	}, 1000);
 
 	return function stop() {
 		clearInterval(interval);
