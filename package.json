@@ -30,7 +30,7 @@
   },
   "build": {
     "linux": {
-      "target": "arm64"
+      "target": ["AppImage"]
     }
   }
 }
