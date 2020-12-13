@@ -1,6 +1,6 @@
 {
   "name": "temp-monitor-client",
-  "author": "@arohand",
+  "author": "John Doe <john@doe.com>",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
