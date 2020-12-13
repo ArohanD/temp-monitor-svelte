@@ -27,5 +27,14 @@
     "rollup-plugin-scss": "^2.6.1",
     "sirv-cli": "^1.0.0",
     "svelte-preprocess": "^4.6.1"
+  },
+  "build": {
+    "appId": "com.example.app",
+    "linux": {
+      "category": "Development",
+      "target": [
+        "appImage"
+      ]
+    }
   }
 }

@@ -48,6 +48,7 @@
     width: 100vw;
 
     background-color: #dfe1e8;
+    overflow: hidden;
   }
 
 </style>
