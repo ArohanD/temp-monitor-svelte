@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
-    "build:linux": "electron-builder --dir --armv7l --linux deb",
+    "build:linux": "electron-builder build --linux",
     "dev": "rollup -c -w",
     "svelte-start": "sirv public",
     "start": "electron ."
@@ -27,10 +27,5 @@
     "rollup-plugin-scss": "^2.6.1",
     "sirv-cli": "^1.0.0",
     "svelte-preprocess": "^4.6.1"
-  },
-  "build": {
-    "linux": {
-      "target": ["AppImage"]
-    }
   }
 }
