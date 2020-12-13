@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
-    "build:linux": "electron-builder",
+    "build:linux": "electron-builder --dir --armv7l --linux deb",
     "dev": "rollup -c -w",
     "svelte-start": "sirv public",
     "start": "electron ."
