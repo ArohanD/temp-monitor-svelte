@@ -21,9 +21,9 @@ const fakeStat = { loading: {
 }}
 
 export const stats = readable(fakeStat, function start(set) {
-	//const interval = setInterval(() => {
+	const interval = setInterval(() => {
 		asyncFetch(dora, set)
-	//}, 1000);
+	}, 1000);
 
 	return function stop() {
 		clearInterval(interval);
@@ -32,6 +32,8 @@ export const stats = readable(fakeStat, function start(set) {
 
 const asyncFetch = async (url, setFunction) => {
 	const response = await fetch(url)
-	const parse = await response.json()
-	setFunction(parse)
+	if (response.ok) {
+		const parse = await response.json()
+		setFunction(parse)
+	}
 }
